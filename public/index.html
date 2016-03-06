@@ -3,13 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Node Socket Chat</title>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
+  
+  <div class="nickname page">
+    <div id="nickPageTitle">Welcome to Chat!</div>
+    <div id="usersNumber"></div>
+    <div class="form">
+      <h2 class="nickTitle">Enter nickname:</h1>
+      <input class="usernameInput" type="text" maxlength="15"/>
+    </div>
+  </div>
 
-
+  <div class="chat page">
+    <div class="userList">
+      <ul id="usersLabel">Users:</ul>
+      <ul class="userListUser"></ul>
+    </div>
+    <div class="chatArea">
+      <ul class="messages"></ul>
+    </div>
+    <input class="inputMessage" placeholder="Type here..."/>
+    
+  </div>
+  
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="/index.js"></script>
+  <script src="/app.js"></script>
 </body>
 </html>

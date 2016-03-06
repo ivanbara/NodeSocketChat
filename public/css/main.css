@@ -1,0 +1,162 @@
+* {
+  	box-sizing: border-box;
+}
+
+html {
+  	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+  font-family: 
+  		"HelveticaNeue-Light", 
+  		"Helvetica Neue Light", 
+  		"Helvetica Neue", 
+  		Helvetica, 
+  		Arial, 
+  		"Lucida Grande", 
+  		sans-serif; 
+  font-weight: 300;
+  height: 100%;  
+}
+
+ul {
+  	list-style: none;
+}
+
+.page {
+  	height: 100%;
+  	position: absolute;
+  	width: 100%;
+}
+
+.page {
+  	background-color: #0c0c0c;
+}
+
+.nickname.page{
+	display: block;
+}
+
+.nickname.page .form {
+	height: 100px;
+	margin-top: -100px;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	width: 100%;
+}
+
+
+.nickname.page .nickTitle, .nickname.page .usernameInput {
+	color: #EEE8AA;
+	font-weight: 100;
+}
+
+#nickPageTitle{
+	color: #EEE8AA;
+	text-align: center;
+	font-size: 3em;
+	margin-top: 50px;
+	letter-spacing: 2px;
+}
+
+.nickTitle{
+	font-size: 200%;
+	letter-spacing: 2px;
+	padding: 5px;
+}
+
+#usersNumber{
+	color: #EEE8AA;
+	text-align: center;
+	font-size: 1.75em;	
+}
+
+.nickname.page .form .usernameInput {
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid #EEE8AA;
+	outline: none;
+	padding-bottom: 15px;
+	text-align: center;
+	width: 400px;
+}
+
+
+.userList{
+	width: 20%;
+	height: 100%;
+	float: left;
+	background-color: #190729;
+}
+
+#usersLabel{
+	font-weight: 700;
+	font-size: 120%;
+	color: #EEE8AA;
+}
+
+
+.nickname.page .usernameInput {
+  	font-size: 200%;
+  	letter-spacing: 2px;
+}
+
+.username {
+	font-weight: 700;
+	overflow: hidden;
+	padding-right: 15px;
+	text-align: right;
+}
+
+
+#usersLabel{
+	padding-top: 0;
+	padding-bottom: 5px;
+	margin-bottom: 0;
+}
+
+.userListUser{
+	margin-top: 0;
+	padding-top: 0;
+	font-weight: 700;
+}
+
+/* Ouput */
+
+.chatArea {
+	float: left;
+	width: 80%;
+  	height: 100%;
+  	padding-bottom: 60px;
+}
+
+
+.log {
+	color: #EEE8AA;
+	margin: 5px;
+	text-align: center;
+}
+
+.messages {
+	height: 100%;
+	margin: 0;
+	overflow-y: scroll;
+	padding: 10px 20px 10px 20px;
+}
+
+/* Input */
+
+.inputMessage {
+	border: 10px solid #000;
+	border-radius: 15px;
+	bottom: 0;
+	height: 60px;
+
+	outline: none;
+	padding-left: 10px;
+	position: fixed;
+	right: 0;
+	width: 80%;
+}
+

@@ -1,0 +1,28 @@
+{
+  "name": "socketchat",
+  "version": "1.0.0",
+  "description": "node chat with socket",
+  "main": "index.js",
+  "scripts": {
+    "test": "helloworld"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanbara/NodeSocketChat.git"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "ivanbara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivanbara/NodeSocketChat/issues"
+  },
+  "homepage": "https://github.com/ivanbara/NodeSocketChat#readme",
+  "devDependencies": {
+    "express": "^4.13.4",
+    "mongoose": "^4.4.6",
+    "randomcolor": "^0.4.3",
+    "socket.io": "^1.4.5"
+  }
+}
