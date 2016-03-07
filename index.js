@@ -4,8 +4,26 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 3000;
 var ranColor = require('randomcolor');
-//var mongoose = require('mongoose');
 
+
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/chat', function(err){
+	if (err) {
+		console.log(err);
+	} else{
+		console.log('connected to mongodb');
+	}
+});
+
+var mongSchema = mongoose.Schema({
+	username: String,
+	message: String,
+	color: String,
+	created: {type: Date, default: Date.now}
+});
+
+var mongChatModel = mongoose.model('ChatMessage', mongSchema);
 
 var numUsers = 0;
 var users = {};
@@ -21,6 +39,12 @@ app.use(express.static(__dirname + '/public'));
 // socket
 io.on('connection', function(socket){
 	var addedUser = false;
+
+	var query = mongChatModel.find({});
+	query.sort({created: -1}).limit(10).exec(function(err, docs){
+		if(err) throw err;
+		socket.emit('load old messages', docs);
+	});
 
   	socket.on('add user', function (username) {
     	if (addedUser) return;
@@ -55,6 +79,17 @@ io.on('connection', function(socket){
       		message: data,
       		color: socket.userColor
     	});
+    	// save message to database
+    	var msg = new mongChatModel({
+    		username: socket.username,
+      		message: data,
+      		color: socket.userColor
+    	});
+    	
+    	msg.save(function (err, data) {
+			if (err) console.log(err);
+			else console.log('Saved : ', data );
+		});
   	});
 
 

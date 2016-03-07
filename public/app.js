@@ -43,6 +43,27 @@ $(function(){
 		return input;
 	}
 
+	// Date
+	function getDateFromString(dateString){
+		date = new Date(dateString);
+		
+		var formattedDate = date.getDate() + '.' 
+							+ date.getMonth() + '.'
+							+ date.getFullYear();
+		return formattedDate;
+	}
+
+	function getTimeFromString(dateString){
+		date = new Date(dateString);
+		var hours = ("0" + date.getHours()).slice(-2);
+		var minutes = ("0" + date.getMinutes()).slice(-2);
+		var seconds = ("0" + date.getSeconds()).slice(-2);
+		var formattedTime = hours + ':'
+							+ minutes + ':'
+							+ seconds;
+		return formattedTime;	
+	}
+
 	// Keyboard events
 
 	$window.keydown(function (event) {
@@ -69,7 +90,8 @@ $(function(){
 	      addChatMessage({
 	        username: username,
 	        message: message,
-	        color: userColor
+	        color: userColor,
+	        created: new Date()
 	      });
 	      socket.emit('new message', message);
 	    }
@@ -77,12 +99,14 @@ $(function(){
 
 		// Adds the visual chat message to the message list
 	function addChatMessage (data, options) {
+		var date = '(' + getTimeFromString(data.created) + ')  ';
+		var $messageTime = $('<span class="messagetTime"/>').text(date).css('color', data.color);
 	    var $usernameDiv = $('<span class="username"/>').text(data.username).css('color', data.color);
 	    var $messageBodyDiv = $('<span class="messageBody">').text(data.message).css('color', data.color);
 
 	    var $messageDiv = $('<li class="message"/>')
 	      .data('username', data.username)
-	      .append($usernameDiv, $messageBodyDiv);
+	      .append($messageTime, $usernameDiv, $messageBodyDiv);
 
 	    addMessageDom($messageDiv);
 	}
@@ -174,6 +198,10 @@ $(function(){
 		userColor = data.color;
 	});
 
-
+	socket.on('load old messages', function(docks){
+		for (var i = docks.length-1; i >= 0; i--) {
+			addChatMessage(docks[i]);
+		}
+	});
 
 });
